@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // App shell components
 import AppHeader from '../AppHeader/AppHeader';
-import AppFooter from '../AppFooter/AppFooter';
+//import AppFooter from '../AppFooter/AppFooter';
 
 // React Router page components
 import Home from '../Home/Home';
