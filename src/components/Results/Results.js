@@ -40,19 +40,19 @@ export default function CustomResults(props) {
       }
     ]
   };
-  console.log(props.results);
+  console.log(props.documents);
 
   const infoStyle = {
     margin: '1em'
   }
   //const result_html = [];
 
-  let results = data.documents.map(result => {
+  let results = props.documents.map(result => {
     return <Result 
-        key={result.id} 
-        title={result.title} 
-        author={result.author}
-        image_url={result.image_url}
+        key={result.document.id} 
+        title={result.document.title} 
+        author={result.document.authors}
+        image_url={result.document.image_url}
       />;
 });
 

@@ -15,3 +15,9 @@
     margin-right: auto;
     max-width: fit-content;
 }
+
+.search-bar {
+    margin: 1em;
+    margin-bottom: 3em;
+    margin-top: 2em;
+}
