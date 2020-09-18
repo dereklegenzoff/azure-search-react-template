@@ -11,8 +11,10 @@ import SearchBar from '../SearchBar/SearchBar';
 
 
 class Search extends Component {
+  
   state = {
     results: [],
+    search: "*",
     error: false
   }
 
@@ -28,7 +30,34 @@ class Search extends Component {
             console.log(error);
             this.setState({error: true});
         });
-}
+  }
+
+  postSearchHandler = (event) => {
+    event.preventDefault();
+    const body = {
+      "search": this.state.search
+    }
+
+    console.log(body);
+
+    axios.post( 'http://127.0.0.1:5500/api/search', body )
+          .then( response => {
+              const results = response.data.results;
+              this.setState({results: results});
+              console.log("response");
+              console.log( response );
+          } )
+          .catch(error => {
+              console.log(error);
+              this.setState({error: true});
+          });
+  }
+
+  searchChangeHandler = (searchTerm) => {
+    this.setState({search: searchTerm});
+  }
+
+
 
   render() {
 
@@ -38,7 +67,7 @@ class Search extends Component {
         <div className="row">
         <div className="col-md-3">
           <div className="search-bar">
-            <SearchBar></SearchBar>
+            <SearchBar postSearchHandler={this.postSearchHandler} searchChangeHandler={this.searchChangeHandler}></SearchBar>
           </div>
           <Facets></Facets>
         </div>

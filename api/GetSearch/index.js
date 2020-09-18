@@ -1,19 +1,23 @@
 const { SearchClient, AzureKeyCredential } = require("@azure/search-documents");
 
+const indexName = "good-books";
+const apiKey = "";
+
+// Create a SearchClient to send queries
+const client = new SearchClient(
+    `https://delegenz-sandbox.search.windows.net/`,
+    indexName,
+    new AzureKeyCredential(apiKey)
+);
+
 module.exports = async function (context, req) {
 
-    const indexName = "good-books";
-    const apiKey = "928E167099863C24E44BC5201610C0A1";
-
-    // Create a SearchClient to send queries
-    const client = new SearchClient(
-        `https://delegenz-sandbox.search.windows.net/`,
-        indexName,
-        new AzureKeyCredential(apiKey)
-    );
-
+    var data = req.body;
+    //var input = context.bindings.input;
+    console.log(context);
+    console.log(req);
     // Let's get the top 5 jobs related to Microsoft
-    const searchResults = await client.search("harry potter", { top: 5 });
+    const searchResults = await client.search(data.search, { top: 10 });
 
     var output = []
     for await (const result of searchResults.results) {
