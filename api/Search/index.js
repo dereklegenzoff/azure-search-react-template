@@ -1,11 +1,11 @@
 const { SearchClient, AzureKeyCredential } = require("@azure/search-documents");
 
-const indexName = "good-books";
-const apiKey = "";
+const indexName = process.env["SearchIndexName"];
+const apiKey = process.env["SearchApiKey"];
 
 // Create a SearchClient to send queries
 const client = new SearchClient(
-    `https://delegenz-sandbox.search.windows.net/`,
+    `https://` + process.env["SearchServiceName"] + `.search.windows.net/`,
     indexName,
     new AzureKeyCredential(apiKey)
 );
