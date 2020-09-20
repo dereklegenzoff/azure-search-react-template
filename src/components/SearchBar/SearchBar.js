@@ -11,6 +11,23 @@ const searchBar = (props) => {
         props.searchChangeHandler(searchTerm);
     }
 
+
+    // const renderSuggestion = (suggestion) => {
+    //     return (
+    //         <div>
+    //             <pre>
+    //                 <code>
+    //                     {JSON.stringify(suggestion, null, 4)}
+    //                 </code>
+    //             </pre>
+    //         </div>
+    //     );
+    // }
+
+    // let suggestions = props.suggestions.map(sg => {
+    //     return renderSuggestion(sg);
+    //   });
+
     return (
         <form>
             <div class="input-group">

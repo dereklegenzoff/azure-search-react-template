@@ -16,8 +16,16 @@ module.exports = async function (context, req) {
     //var input = context.bindings.input;
     console.log(context);
     console.log(req);
-    // Let's get the top 5 jobs related to Microsoft
-    const searchResults = await client.search(data.search, { top: 10 });
+
+    
+    var searchOptions = {
+        top: data.top,
+        skip: data.skip,
+        count: true
+    }
+
+    // Sending the search request
+    const searchResults = await client.search(data.search, searchOptions);
 
     var output = []
     for await (const result of searchResults.results) {

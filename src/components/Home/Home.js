@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import "../Search/Search.css";
 import SearchBar from '../SearchBar/SearchBar';
-//import Carousel from './Carousel/Carousel';
-
 
 
 export default function Home() {
@@ -29,13 +28,33 @@ export default function Home() {
     textAlign: "center"
   }
 
+  const [ searchTerm, setSearchTerm ] = useState("");
+
+  const history = useHistory();
+  const navigateToSearchPage = () => history.push('/search?searchTerm=' + searchTerm);
+
+  // const postSearchHandler = (event) => {
+  //   event.preventDefault();
+  //   // const body = {
+  //   //   "search": this.state.search
+  //   // }
+
+  //   console.log("searchTerm");
+  //   console.log(searchTerm);
+
+  //   //fetch( '/search?searchTerm=' + searchTerm);
+  //   let url = "/search"; //?searchTerm=" + searchTerm;
+  //   return  <Redirect  to="/search/" />;
+  // }
+  
+
   return (
     <div>
       <div class="row" style={searchStyle}>
         <img style={imageStyle} src="https://azure.microsoft.com/svghandler/search/?width=600&height=315.svg" alt="cognitive search logo"></img>
         {/* <img style={imageStyle} src="https://oneroomwithaview.files.wordpress.com/2013/04/microsoft-logo-2012.jpg"></img> */}
         <p style={text} class="lead">Powered by Azure Cognitive Search</p>
-        <SearchBar ></SearchBar>
+        <SearchBar postSearchHandler={navigateToSearchPage} searchChangeHandler={setSearchTerm}></SearchBar>
       </div>
     </div>
   );
