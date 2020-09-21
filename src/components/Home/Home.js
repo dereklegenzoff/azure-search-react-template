@@ -31,7 +31,7 @@ export default function Home() {
   const [ searchTerm, setSearchTerm ] = useState("");
 
   const history = useHistory();
-  const navigateToSearchPage = () => history.push('/search?searchTerm=' + searchTerm);
+  const navigateToSearchPage = () => history.push('/search?q=' + searchTerm);
 
   // const postSearchHandler = (event) => {
   //   event.preventDefault();

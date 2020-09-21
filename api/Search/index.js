@@ -17,11 +17,12 @@ module.exports = async function (context, req) {
     console.log(context);
     console.log(req);
 
-    
+    let facets = process.env["SearchFacets"].split(",");
     var searchOptions = {
         top: data.top,
         skip: data.skip,
-        count: true
+        includeTotalResultCount: true,
+        facets: facets
     }
 
     // Sending the search request
@@ -33,8 +34,13 @@ module.exports = async function (context, req) {
         output.push(result);
     }
 
+    //context.log(searchResults);
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: { results: output}
+        body: { 
+                count: searchResults.count, 
+                results: output, 
+                facets: searchResults.facets
+            }
     };
 };

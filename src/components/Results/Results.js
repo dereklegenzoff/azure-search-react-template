@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Results(props) {
 
-  console.log("docs");
-  console.log(props.documents);
+  //console.log("results:");
+  //console.log(props.documents);
 
   const infoStyle = {
     margin: '1em'
@@ -26,7 +26,7 @@ export default function Results(props) {
 
   return (
     <div>
-      <p style={infoStyle}>Showing 5 of 25 results</p>
+      <p style={infoStyle}>Showing 10 of 20 results</p>
       <div className="row row-cols-lg-5 Results">
         {results}
       </div>
