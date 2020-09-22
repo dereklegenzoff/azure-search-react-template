@@ -20,14 +20,14 @@ export default function Search() {
   const [ q, setQ ] = useState(new URLSearchParams(location.search).get('q') ?? "*");
   const [ top, setTop ] = useState(new URLSearchParams(location.search).get('top') ?? 10);
   const [ skip, setSkip ] = useState(new URLSearchParams(location.search).get('skip') ?? 0);
-  const [ error, setError ] = useState(false);
+  //const [ error, setError ] = useState(false);
   const [ filters, setFilters ] = useState([]);
   const [ facets, setFacets ] = useState({});
 
   let resultsPerPage = 10;
   
   useEffect(() => {
-
+    setTop(10);
     setSkip(currentPage * top);
     const body = {
       search: q,
@@ -47,7 +47,7 @@ export default function Search() {
         } )
         .catch(error => {
             console.log(error);
-            setError(true);
+            // setError(true);
         });
   }, [q, top, skip, filters, currentPage]);
 
