@@ -21,7 +21,7 @@ module.exports = async function (context, req) {
     var searchOptions = {
         top: data.top,
         skip: data.skip,
-        includeTotalResultCount: true,
+        includeTotalCount: true,
         facets: facets
     }
 
@@ -34,7 +34,7 @@ module.exports = async function (context, req) {
         output.push(result);
     }
 
-    //context.log(searchResults);
+    context.log(searchResults);
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: { 

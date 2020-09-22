@@ -5,10 +5,6 @@ import "./Facets.css";
 
 export default function Facets(props) {
 
-    const facetStyle = {
-        margin: "1rem"
-    }
-
     const facetBoxStyle = {
         borderRight: "1px solid #f0f0f0",
         height: "100%"

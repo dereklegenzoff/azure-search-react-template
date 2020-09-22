@@ -3,15 +3,20 @@ import React from 'react';
 import './CheckboxFacet.css';
 
 const checkboxFacet = (props) => {
+
+    const facetStyle = {
+        margin: "1rem"
+    }
+
     console.log("checkbopx facet:")
     console.log(props);
     const checkboxes = props.values.map(facetValue => {
         return (
-            <li>
+            <li className="facet-checkbox">
                 <div>
                     <label>
                         {/* <input type="checkbox" onChange={toggleFacet.bind(null, valueKey)} checked={value.selected}/> {value.value + " "}{countDisplay} */}
-                        <input type="checkbox"/> {facetValue.value + " "}{facetValue.count}
+                        <input type="checkbox"/> {facetValue.value + " "}{"(" + facetValue.count + ")"}
                     </label>
                 </div>
             </li>
@@ -20,15 +25,13 @@ const checkboxFacet = (props) => {
 
 
     return (
-        <div>
-            <div>
-                <h4>
-                    <a data-toggle="collapse">
-                        <span aria-hidden="true"></span> {props.name}
-                    </a>
-                </h4>
+        <div className="card" style={facetStyle}>
+            <div className="card-header">
+                <h5>
+                    {props.name}
+                </h5>
             </div>
-            <div>
+            <div className="card-body">
                 <ul>
                     {checkboxes}
                 </ul>
