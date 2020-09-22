@@ -36,7 +36,7 @@ export default function Search() {
       filters: filters
     }
 
-    axios.post( 'http://127.0.0.1:5500/api/search', body)
+    axios.post( '/api/search', body)
         .then( response => {
             console.log("search response:");
             console.log(response.data);
