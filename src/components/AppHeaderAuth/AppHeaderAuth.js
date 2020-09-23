@@ -11,14 +11,14 @@ export default function AppHeaderAuth() {
   const authElement = document.querySelector('.auth');
   if (authElement) {
     // Default sign in
-    let html = '<a href="/login" className="nav-link">Sign In</a>';
+    let html = '<a href="/login" class="auth-link">Sign In</a>';
     
     // User profile and sign out
     let clientPrincipal = (user && user.clientPrincipal) || null,
         userDetails     = (clientPrincipal && clientPrincipal.userDetails) || null;
 
     if (userDetails) {
-      html = `${userDetails} | <a href="/logout" className="nav-link">Sign Out</a>`;
+      html = `${userDetails} | <a href="/logout" class="auth-link">Sign Out</a>`;
     }
 
     authElement.innerHTML = html;
