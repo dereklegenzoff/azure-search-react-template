@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import "../Search/Search.css";
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
+import "../../pages/Search/Search.css";
 
 export default function Home() {
 

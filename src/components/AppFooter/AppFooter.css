@@ -1,5 +1,6 @@
 .footer {
-    background-color: #efefef;
+    margin-top: 1em;
     padding: 1em;
-    font-size: 0.9em;
+    font-size: 0.85em;
+    color: #666666;
 }

@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {useLocation} from "react-router-dom";
 
-import Results from '../Results/Results';
-import Pager from '../Pager/Pager';
-import Facets from '../Facets/Facets';
-import SearchBar from '../SearchBar/SearchBar';
+import Results from '../../components/Results/Results';
+import Pager from '../../components/Pager/Pager';
+import Facets from '../../components/Facets/Facets';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 import "./Search.css";
-
 
 export default function Search() {
   
