@@ -17,16 +17,16 @@ export default function Search() {
   const [ resultCount, setResultCount ] = useState(0);
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ q, setQ ] = useState(new URLSearchParams(location.search).get('q') ?? "*");
-  const [ top, setTop ] = useState(new URLSearchParams(location.search).get('top') ?? 10);
+  const [ top, setTop ] = useState(new URLSearchParams(location.search).get('top') ?? 8);
   const [ skip, setSkip ] = useState(new URLSearchParams(location.search).get('skip') ?? 0);
   //const [ error, setError ] = useState(false);
   const [ filters, setFilters ] = useState([]);
   const [ facets, setFacets ] = useState({});
 
-  let resultsPerPage = 10;
+  let resultsPerPage = top;
   
   useEffect(() => {
-    setTop(10);
+    setTop(8);
     setSkip(currentPage * top);
     const body = {
       search: q,

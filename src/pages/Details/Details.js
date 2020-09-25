@@ -11,7 +11,8 @@ export default function Details() {
   
 
   useEffect(() => {
-    axios.get( 'http://127.0.0.1:5500/api/lookup?id=' + id )
+    console.log(id);
+    axios.get('/api/lookup?id=' + id )
         .then( response => {
             const doc = response.data.document;
             setDocument(doc);
@@ -24,20 +25,6 @@ export default function Details() {
   }, [id]);
 
   //id = useParams();
-
-  // componentDidMount () {
-  //   axios.get( 'http://127.0.0.1:5500/api/lookup?id=' + this.state.id )
-  //       .then( response => {
-  //           const doc = response.data.document;
-  //           this.setState({document: doc});
-  //           console.log("response");
-  //           console.log( response );
-  //       } )
-  //       .catch(error => {
-  //           console.log(error);
-  //           this.setState({error: true});
-  //       });
-  // }
 
   return (
     <main className="main main--details">

@@ -3,3 +3,7 @@
     padding: 0;
     margin: 0;
 }
+
+.card-body {
+    padding-left: 0px;
+}

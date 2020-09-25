@@ -51,8 +51,7 @@ export default function Home() {
   return (
     <div>
       <div class="row" style={searchStyle}>
-        <img style={imageStyle} src="https://azure.microsoft.com/svghandler/search/?width=600&height=315.svg" alt="cognitive search logo"></img>
-        {/* <img style={imageStyle} src="https://oneroomwithaview.files.wordpress.com/2013/04/microsoft-logo-2012.jpg"></img> */}
+        <img style={imageStyle} src="/cognitive-search.png" alt="cognitive search logo"></img>
         <p style={text} class="lead">Powered by Azure Cognitive Search</p>
         <SearchBar postSearchHandler={navigateToSearchPage} searchChangeHandler={setSearchTerm}></SearchBar>
       </div>
