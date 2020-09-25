@@ -27,7 +27,7 @@ export default function Search() {
   
   useEffect(() => {
     setTop(8);
-    setSkip(currentPage * top);
+    setSkip((currentPage-1) * top);
     const body = {
       search: q,
       top: top,
@@ -67,7 +67,7 @@ export default function Search() {
         </div>
         
         <div className="col-md-9">
-          <Results documents={results} count={resultCount}></Results>
+          <Results documents={results} top={top} skip={skip} count={resultCount}></Results>
           <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={setCurrentPage}></Pager>
         </div>
       </div>
