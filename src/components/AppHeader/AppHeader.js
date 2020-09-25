@@ -1,4 +1,5 @@
 import React from 'react';
+import AppHeaderAuth from '../AppHeaderAuth/AppHeaderAuth';
 
 import './AppHeader.css';
 
@@ -28,20 +29,10 @@ export default function AppHeader() {
             </li>
           </ul>
         </div>
+
+        <AppHeaderAuth />
       </nav>
-      {/* <div class="row">
-      <a href="/">
-        <img style={iconStyle} src="/microsoft-small.svg" className="logo" alt="Microsoft" />
-      </a> 
-      <nav className="navbar-nav">
-        <div className="nav-item">
-          <a href="/" className="nav-link">Home</a>
-        </div>
-        
-        <a href="/search" className="nav-link">Search</a>
-        <a href="https://azure.microsoft.com/en-us/services/search/" className="nav-link">Learn More</a>
-      </nav>
-      </div> */}
+      
     </header>
   );
 };
