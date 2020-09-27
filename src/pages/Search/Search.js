@@ -17,17 +17,17 @@ export default function Search() {
   const [ resultCount, setResultCount ] = useState(0);
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ q, setQ ] = useState(new URLSearchParams(location.search).get('q') ?? "*");
-  const [ top, setTop ] = useState(new URLSearchParams(location.search).get('top') ?? 10);
+  const [ top, setTop ] = useState(new URLSearchParams(location.search).get('top') ?? 8);
   const [ skip, setSkip ] = useState(new URLSearchParams(location.search).get('skip') ?? 0);
   //const [ error, setError ] = useState(false);
   const [ filters, setFilters ] = useState([]);
   const [ facets, setFacets ] = useState({});
 
-  let resultsPerPage = 10;
+  let resultsPerPage = top;
   
   useEffect(() => {
-    setTop(10);
-    setSkip(currentPage * top);
+    setTop(8);
+    setSkip((currentPage-1) * top);
     const body = {
       search: q,
       top: top,
@@ -67,7 +67,7 @@ export default function Search() {
         </div>
         
         <div className="col-md-9">
-          <Results documents={results} count={resultCount}></Results>
+          <Results documents={results} top={top} skip={skip} count={resultCount}></Results>
           <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={setCurrentPage}></Pager>
         </div>
       </div>

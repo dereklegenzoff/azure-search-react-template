@@ -5,12 +5,9 @@ import "./Facets.css";
 
 export default function Facets(props) {
 
-    const facetBoxStyle = {
-        borderRight: "1px solid #f0f0f0",
-        height: "100%"
-    }
-    console.log("facets");
-    console.log(props);
+
+    //console.log("Facets:");
+    //console.log(props);
 
     var facets;
     try{
@@ -26,31 +23,20 @@ export default function Facets(props) {
         console.log(error);
     }
 
+    const facetBoxStyle = {
+        borderRight: "1px solid #f0f0f0"
 
+    }
+
+    const boxHeight = {
+        height: "100%"
+    }
     return (
-        <div id="facetPanel" style={facetBoxStyle}>
-            <div id="clearFilters"></div>
-            {facets}
-            {/* <div class="card" style = {facetStyle}>
-                <div class="card-header">
-                    <strong>Authors</strong>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Derek Legenzoff</li>
-                    <li class="list-group-item">Maddie Henning</li>
-                    <li class="list-group-item">J.K. Rowling</li>
-                </ul>
+        <div id="facetPanel" style={boxHeight}>
+            <div style={facetBoxStyle}>
+                <div id="clearFilters"></div>
+                {facets}
             </div>
-            <div class="card" style = {facetStyle}>
-                <div class="card-header">
-                    <strong>Genres</strong>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Fiction</li>
-                    <li class="list-group-item">Nonfiction</li>
-                    <li class="list-group-item">Comedy</li>
-                </ul>
-            </div> */}
         </div>
     );
 };

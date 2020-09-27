@@ -24,16 +24,17 @@
         "route": "/.auth/login/twitter",
         "statusCode": "404"
       },
-
       {
         "route": "/home",
         "serve": "/",
         "statusCode": 301
       },
-  
-      { "route": "/search" },
-      { "route": "/details" },
-
+      { 
+        "route": "/search" 
+      },
+      { 
+        "route": "/details/*" 
+      },
       {
         "route": "/*",
         "serve": "/",

@@ -50,7 +50,7 @@ export default function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/search" component={Search} />
-            <Route path="/details" component={Details} />
+            <Route path="/details/:id" component={Details} />
           </Switch>
         </Router>
         <AppFooter />

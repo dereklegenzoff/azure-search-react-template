@@ -13,6 +13,15 @@ export default function Pager(props) {
         props.setCurrentPage(selectedPage);
     }, [selectedPage, props]);
 
+    function goToNextPage() {
+        setSelectedPage(selectedPage + 1);
+    }
+
+    function goToPreviousPage() {
+        setSelectedPage(selectedPage - 1);
+    }
+
+
     const itemStyle = {
         margin: "1em",
         marginLeft: "auto",
@@ -69,19 +78,19 @@ export default function Pager(props) {
                             <span class="page-link">Previous</span>
                         </li>);
     } else {
-        previousButton = (<li class="page-item" key="prev">
-                            <span class="page-link">Previous</span>
+        previousButton = (<li class="page-item" key="prev" onClick={goToPreviousPage}>
+                            <button class="page-link">Previous</button>
                         </li>);
     }
 
     var nextButton;
-    if (props.currentPage === totalPages) {
+    if (parseInt(selectedPage) === totalPages) {
         nextButton = (<li class="page-item disabled" key="next">
                             <span class="page-link">Next</span>
                         </li>);
     } else {
-        nextButton = (<li class="page-item" key="next">
-                            <span class="page-link">Next</span>
+        nextButton = (<li class="page-item" key="next" >
+                            <button class="page-link" onClick={goToNextPage}>Next</button>
                         </li>);
     }
 

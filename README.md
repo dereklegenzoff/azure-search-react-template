@@ -1,6 +1,6 @@
-# Search UI
+# Azure Cognitive Search UI
 
-This code is forked from the sample in the [search-ui-azure-connector](https://github.com/iMicknl/search-ui-azure-connector/tree/master/sample).
+This sample is a react template for Azure Cognitive Search.
 
 ## Prerequisites
 
