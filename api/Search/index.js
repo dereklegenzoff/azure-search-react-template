@@ -1,5 +1,4 @@
-import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import { SearchClient, AzureKeyCredential, SearchOptions } from "@azure/search-documents";
+const { SearchClient, AzureKeyCredential } = require("@azure/search-documents");
 
 const indexName = process.env["SearchIndexName"];
 const apiKey = process.env["SearchApiKey"];
@@ -12,7 +11,8 @@ const client = new SearchClient(
     new AzureKeyCredential(apiKey)
 );
 
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+module.exports = async function (context, req) {
+
     //context.log(req);
 
     // Reading inputs from HTTP Request
@@ -25,11 +25,12 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
     // Creating SearchOptions for query
     // Values after ?? are used if parameters are undefined
-    var searchOptions: SearchOptions<never> = {
+    var searchOptions = {
         top: top ?? 10,
         skip: skip ?? 0,
         includeTotalCount: true,
-        facets: facets ?? []
+        facets: facets ?? [],
+        select: ["authors", "title"]
     }
 
     if (filters && filters.length > 0) {
@@ -62,7 +63,4 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             facets: searchResults.facets
         }
     };
-
 };
-
-export default httpTrigger;

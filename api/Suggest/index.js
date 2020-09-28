@@ -1,5 +1,4 @@
-import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import { SearchClient, AzureKeyCredential } from "@azure/search-documents";
+const { SearchClient, AzureKeyCredential } = require("@azure/search-documents");
 
 const indexName = process.env["SearchIndexName"];
 const apiKey = process.env["SearchApiKey"];
@@ -12,7 +11,8 @@ const client = new SearchClient(
     new AzureKeyCredential(apiKey)
 );
 
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+module.exports = async function (context, req) {
+    
     //context.log(req);
 
     // Reading inputs from HTTP Request
@@ -27,9 +27,6 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: { document: document}
+        body: { suggestions: suggestions}
     };
-
 };
-
-export default httpTrigger;
