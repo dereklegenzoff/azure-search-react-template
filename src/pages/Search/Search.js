@@ -29,7 +29,7 @@ export default function Search() {
     setTop(8);
     setSkip((currentPage-1) * top);
     const body = {
-      search: q,
+      q: q,
       top: top,
       skip: skip,
       filters: filters

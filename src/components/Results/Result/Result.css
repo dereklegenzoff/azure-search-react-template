@@ -1,4 +1,4 @@
-.Post {
+.result {
     width: 250px;
     padding: 16px;
     text-align: center;
@@ -9,23 +9,14 @@
     cursor: pointer;
 }
 
-.Post:hover,
-.Post:active {
+.result:hover,
+.result:active {
     background-color: #C0DDF5;
 }
 
-.Author {
-    margin: 16px 0;
-    color: #ccc;
-}
 
 /* Detail Styles */
 .result-item {
     margin-bottom: 2em;
     text-align:center;
-}
-.result-item-image {
-    min-width: 150px;
-    max-width: 200px;
-    max-height: 300px;
 }

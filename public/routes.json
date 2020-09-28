@@ -33,6 +33,15 @@
         "route": "/search" 
       },
       { 
+        "route": "/api/search" 
+      },
+      { 
+        "route": "/api/lookup" 
+      },
+      { 
+        "route": "/api/suggest" 
+      },
+      { 
         "route": "/details/*" 
       },
       {

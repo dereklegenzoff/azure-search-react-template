@@ -2,33 +2,30 @@ const { SearchClient, AzureKeyCredential } = require("@azure/search-documents");
 
 const indexName = process.env["SearchIndexName"];
 const apiKey = process.env["SearchApiKey"];
+const searchServiceName = process.env["SearchServiceName"];
 
 // Create a SearchClient to send queries
 const client = new SearchClient(
-    `https://` + process.env["SearchServiceName"] + `.search.windows.net/`,
+    `https://` + searchServiceName + `.search.windows.net/`,
     indexName,
     new AzureKeyCredential(apiKey)
 );
 
 module.exports = async function (context, req) {
     
-    var data;
-    if (req.method === 'POST') {
-        data = req.body
-    }
-    else if (req.method === 'GET') {
-        data = req.query
-    }
-
     //context.log(req);
-    
-    // Let's get the top 5 suggestions for that search term
-    const document = await client.getDocument(data.id)
 
-    //context.log(suggestions);
+    // Reading inputs from HTTP Request
+    const id = (req.query.id || (req.body && req.body.id));
+    
+    // Returning the document with the matching id
+    const document = await client.getDocument(id)
+
+    context.log(document);
 
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: { document: document}
     };
+    
 };
