@@ -20,17 +20,16 @@ module.exports = async function (context, req) {
     const top = (req.query.top || (req.body && req.body.top));
     const skip = (req.query.skip || (req.body && req.body.skip));
     const filters = (req.query.filters || (req.body && req.body.filters));
-    const facets = process.env["Facets"].split(",");
+    const facets = process.env["SearchFacets"].split(",");
     //var resultFields: string[] = process.env["ResultFields"].split(",");
 
     // Creating SearchOptions for query
     // Values after ?? are used if parameters are undefined
     var searchOptions = {
-        top: top ?? 10,
-        skip: skip ?? 0,
+        top: top,
+        skip: skip,
         includeTotalCount: true,
-        facets: facets ?? [],
-        select: ["authors", "title"]
+        facets: facets
     }
 
     if (filters && filters.length > 0) {
