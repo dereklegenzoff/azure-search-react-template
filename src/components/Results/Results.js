@@ -14,19 +14,19 @@ export default function Results(props) {
   }
   //const result_html = [];
 
-  let results = props.documents.map(result => {
+  let results = props.documents.map((result, index) => {
     return <Result 
-        key={result.document.id} 
-        id={result.document.id} 
-        title={result.document.original_title} 
-        author={result.document.authors}
-        image_url={result.document.image_url}
+        key={index} 
+        document={result.document}
       />;
   });
 
+  let beginDocNumber = Math.min(props.skip + 1, props.count);
+  let endDocNumber = Math.min(props.skip + props.top, props.count);
+
   return (
     <div>
-      <p style={infoStyle}>Showing {props.skip + 1}-{Math.min(props.skip + props.top, props.count)} of {props.count} results</p>
+      <p style={infoStyle}>Showing {beginDocNumber}-{endDocNumber} of {props.count} results</p>
       <div className="row row-cols-lg-5 Results">
         {results}
       </div>
