@@ -19,7 +19,7 @@ module.exports = async function (context, req) {
     var q = (req.query.q || (req.body && req.body.q));
     const top = (req.query.top || (req.body && req.body.top));
     const skip = (req.query.skip || (req.body && req.body.skip));
-    const filters = (req.query.filters || (req.body && req.body.filters));
+    //const filters = (req.query.filters || (req.body && req.body.filters));
     const facets = process.env["SearchFacets"].split(",");
     //var resultFields: string[] = process.env["ResultFields"].split(",");
 
@@ -32,9 +32,9 @@ module.exports = async function (context, req) {
         facets: facets
     }
 
-    if (filters && filters.length > 0) {
-        searchOptions.filter = filters;
-    }
+    // if (filters && filters.length > 0) {
+    //     searchOptions.filter = filters;
+    // }
 
     // If search term is empty, search everything
     if (!q || q === "") {
