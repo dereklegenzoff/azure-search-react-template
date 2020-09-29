@@ -1,6 +1,8 @@
 # Azure Cognitive Search UI
 
-This sample is a react template for Azure Cognitive Search.
+This sample is a React template for Azure Cognitive Search. It leverages the Azure SDK for Javascript/Typescript and Azure Static Web Apps to make it easy to get up and running with a simple web application.
+
+You can view the resulting web application here: [https://victorious-beach-0ab88b51e.azurestaticapps.net/](https://victorious-beach-0ab88b51e.azurestaticapps.net/)
 
 ## Prerequisites
 
@@ -14,18 +16,23 @@ This sample is a react template for Azure Cognitive Search.
 
 1. Clone (or Fork and Clone) this repository
 
-1. Rename the "api/local.settings.json.rename" to "api/local.settings.json".
+1. Rename the `api/local.settings.json.rename` file to `api/local.settings.json`.
 
-The "local.settings.json" file holds all of the keys that the application needs. You'll need to copy these keys in from the corresponding template output in the portal.
+The `local.settings.json` file holds all of the keys that the application needs. You'll need to copy these keys in from the corresponding template output in the portal.
 
-| local.settings.json setting | Template output           |
-| --------------------------- | ------------------------- |
-| STORAGE_ACCOUNT             | storage_account           |
-| STORAGE_KEY                 | storage_key               |
-| STORAGE_CONNECTION_STRING   | storage_connection_string |
-| MAP_KEY                     | map_key                   |
-| AI_API_KEY                  | ai_api_key                |
-| GITHUB_API_KEY              | Github API key            |
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "SearchApiKey": "<your-search-api-key>",
+    "SearchServiceName": "<your-service-name>",
+    "SearchIndexName": "good-books",
+    "SearchFacets": "authors,language_code"
+  }
+}
+```
 
 ## Running the application locally
 
