@@ -1,6 +1,8 @@
 # Azure Cognitive Search UI
 
-This sample is a react template for Azure Cognitive Search. It leverages the Azure SDK for Javascript/Typescript and Azure Static Web Apps to make it easy to get up and running with a simple web application.
+This sample is a React template for Azure Cognitive Search. It leverages the Azure SDK for Javascript/Typescript and Azure Static Web Apps to make it easy to get up and running with a simple web application.
+
+You can view the resulting web application here: [https://victorious-beach-0ab88b51e.azurestaticapps.net/](https://victorious-beach-0ab88b51e.azurestaticapps.net/)
 
 ## Prerequisites
 
