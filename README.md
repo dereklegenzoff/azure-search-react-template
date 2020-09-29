@@ -1,6 +1,6 @@
 # Azure Cognitive Search UI
 
-This sample is a react template for Azure Cognitive Search.
+This sample is a react template for Azure Cognitive Search. It leverages the Azure SDK for Javascript/Typescript and Azure Static Web Apps to make it easy to get up and running with a simple web application.
 
 ## Prerequisites
 
@@ -14,9 +14,9 @@ This sample is a react template for Azure Cognitive Search.
 
 1. Clone (or Fork and Clone) this repository
 
-1. Rename the "api/local.settings.json.rename" to "api/local.settings.json".
+1. Rename the `api/local.settings.json.rename` file to `api/local.settings.json`.
 
-The "local.settings.json" file holds all of the keys that the application needs. You'll need to copy these keys in from the corresponding template output in the portal.
+The `local.settings.json` file holds all of the keys that the application needs. You'll need to copy these keys in from the corresponding template output in the portal.
 
 ```json
 {
