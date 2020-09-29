@@ -1,14 +1,7 @@
 import React from 'react';
 import CheckboxFacet from './CheckboxFacet/CheckboxFacet';
 
-import "./Facets.css";
-
 export default function Facets(props) {
-
-
-    //console.log("Facets:");
-    //console.log(props);
-
     var facets;
     try{
         facets = Object.keys(props.facets).map(key => {

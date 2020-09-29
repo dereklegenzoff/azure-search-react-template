@@ -2,7 +2,6 @@ import React from 'react';
 import Result from './Result/Result';
 
 import "./Results.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Results(props) {
 

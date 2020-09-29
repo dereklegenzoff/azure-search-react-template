@@ -56,7 +56,7 @@ export default function Search() {
   }
 
   return (
-    <div className="container-fluid">
+    <main className="main main--search container-fluid">
       
       <div className="row">
         <div className="col-md-3">
@@ -71,6 +71,6 @@ export default function Search() {
           <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={setCurrentPage}></Pager>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

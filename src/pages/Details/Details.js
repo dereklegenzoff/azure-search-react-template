@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
 import axios from 'axios';
 
-import "./Details.css";
-
 export default function Details() {
 
   let { id } = useParams();
@@ -43,7 +41,7 @@ export default function Details() {
 
   if (selectedTab === 0) {
     return (
-      <div class="container fluid" style={cardStyle}>
+      <main class="main main--details container fluid" style={cardStyle}>
         <div class="card text-center">
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
@@ -66,11 +64,11 @@ export default function Details() {
             {/* <button class="btn btn-primary">Go somewhere</button> */}
           </div>
         </div>
-      </div>
+      </main>
     );
   } else {
     return (
-      <div class="container fluid" style={cardStyle}>
+      <main class="main main--details container fluid" style={cardStyle}>
         <div class="card text-center">
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
@@ -86,7 +84,7 @@ export default function Details() {
           <div>{JSON.stringify(document, null, 2)}</div>
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 

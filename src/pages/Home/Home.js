@@ -49,12 +49,12 @@ export default function Home() {
   
 
   return (
-    <div>
+    <main className="main main--home">
       <div class="row" style={searchStyle}>
-        <img style={imageStyle} src="/cognitive-search.png" alt="cognitive search logo"></img>
+        <img style={imageStyle} src="/images/cognitive-search.png" alt="cognitive search logo"></img>
         <p style={text} class="lead">Powered by Azure Cognitive Search</p>
         <SearchBar postSearchHandler={navigateToSearchPage} searchChangeHandler={setSearchTerm}></SearchBar>
       </div>
-    </div>
+    </main>
   );
 };

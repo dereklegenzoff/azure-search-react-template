@@ -1,7 +1,6 @@
 import React from 'react';
 
 import "./SearchBar.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const searchBar = (props) => {
 

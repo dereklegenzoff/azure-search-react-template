@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 
-import './Pager.css';
-
 export default function Pager(props) {
 
     let [selectedPage, setSelectedPage] = useState(props.currentPage);
