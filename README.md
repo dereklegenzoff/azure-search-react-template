@@ -18,14 +18,19 @@ This sample is a react template for Azure Cognitive Search.
 
 The "local.settings.json" file holds all of the keys that the application needs. You'll need to copy these keys in from the corresponding template output in the portal.
 
-| local.settings.json setting | Template output           |
-| --------------------------- | ------------------------- |
-| STORAGE_ACCOUNT             | storage_account           |
-| STORAGE_KEY                 | storage_key               |
-| STORAGE_CONNECTION_STRING   | storage_connection_string |
-| MAP_KEY                     | map_key                   |
-| AI_API_KEY                  | ai_api_key                |
-| GITHUB_API_KEY              | Github API key            |
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "SearchApiKey": "<your-search-api-key>",
+    "SearchServiceName": "<your-service-name>",
+    "SearchIndexName": "good-books",
+    "SearchFacets": "authors,language_code"
+  }
+}
+```
 
 ## Running the application locally
 
