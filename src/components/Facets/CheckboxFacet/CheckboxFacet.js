@@ -21,19 +21,22 @@ const checkboxFacet = (props) => {
         );
     });
 
+    const listStyle = {
+        paddingLeft: "1em"
+    };
+
+    const headerStyle = {
+        textDecoration: "underline"
+    };
 
     return (
-        <div className="card" style={facetStyle}>
-            <div className="card-header">
-                <h5>
-                    {props.name}
-                </h5>
-            </div>
-            <div className="card-body">
-                <ul>
-                    {checkboxes}
-                </ul>
-            </div>
+        <div style={facetStyle}>
+            <h5 className="facet-header"> 
+                {props.name}
+            </h5>
+            <ul style={listStyle}>
+                {checkboxes}
+            </ul>
         </div>
     );
 }

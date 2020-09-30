@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
+import CircularProgress  from '@material-ui/core/CircularProgress';
+
 import axios from 'axios';
 
 import "./Details.css";
@@ -10,9 +12,12 @@ export default function Details() {
   let { id } = useParams();
   const [document, setDocument] = useState({});
   const [selectedTab, setTab] = useState(0);
+  const [ isLoading, setIsLoading ] = useState(true);
+
 
 
   useEffect(() => {
+    setIsLoading(true);
     console.log(id);
     axios.get('/api/lookup?id=' + id)
       .then(response => {
@@ -21,10 +26,13 @@ export default function Details() {
         setDocument(doc);
         console.log("response");
         console.log(response);
+        setIsLoading(false);
       })
       .catch(error => {
         console.log(error);
+        setIsLoading(false);
       });
+
   }, [id]);
 
   // let rawData = Object.keys(document).map(key => {
@@ -41,6 +49,20 @@ export default function Details() {
     height: "auto"
   }
 
+  var body;
+  if (isLoading) {
+    body = (<CircularProgress />);
+  } else {
+    body = (<div class="card-body">
+    <h5 class="card-title">{document.original_title}</h5>
+    <img style={imageStyle} src={document.image_url} alt="Book cover"></img>
+    <p class="card-text">{document.authors?.join('; ')} - {document.original_publication_year}</p>
+    <p class="card-text">ISBN {document.isbn}</p>
+    <Rating name="half-rating-read" value={parseInt(document.average_rating)} precision={0.1} readOnly></Rating>
+    <p class="card-text">{document.ratings_count} Ratings</p>
+  </div>)
+  }
+
   if (selectedTab === 0) {
     return (
       <div class="container fluid" style={cardStyle}>
@@ -55,16 +77,7 @@ export default function Details() {
               </li>
             </ul>
           </div>
-          <div class="card-body">
-            <h5 class="card-title">{document.original_title}</h5>
-            <img style={imageStyle} src={document.image_url} alt="Book cover"></img>
-            <p class="card-text">{document.authors} - {document.original_publication_year}</p>
-            <p class="card-text">ISBN {document.isbn}</p>
-            <Rating name="half-rating-read" value={parseInt(document.average_rating)} precision={0.1} readOnly></Rating>
-            <p class="card-text">{document.ratings_count} Ratings</p>
-            
-            {/* <button class="btn btn-primary">Go somewhere</button> */}
-          </div>
+          {body}
         </div>
       </div>
     );

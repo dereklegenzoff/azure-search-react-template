@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import CircularProgress  from '@material-ui/core/CircularProgress';
 import {useLocation} from "react-router-dom";
 
 import Results from '../../components/Results/Results';
@@ -22,10 +23,12 @@ export default function Search() {
   //const [ error, setError ] = useState(false);
   const [ filters, setFilters ] = useState([]);
   const [ facets, setFacets ] = useState({});
+  const [ isLoading, setIsLoading ] = useState(true);
 
   let resultsPerPage = top;
   
   useEffect(() => {
+    setIsLoading(true);
     setTop(8);
     setSkip((currentPage-1) * top);
     const body = {
@@ -43,11 +46,15 @@ export default function Search() {
             setResults(response.data.results);
             setFacets(response.data.facets);
             setResultCount(response.data.count);
+            setIsLoading(false);
         } )
         .catch(error => {
             console.log(error);
+            setIsLoading(false);
             // setError(true);
         });
+
+    
   }, [q, top, skip, filters, currentPage]);
 
 
@@ -55,6 +62,21 @@ export default function Search() {
     console.log(searchTerm);
     setQ(searchTerm);
     console.log(searchTerm);
+  }
+
+  var body;
+  if (isLoading) {
+    body = (
+      <div className="col-md-9">
+        <CircularProgress />
+      </div>);
+  } else {
+    body = (
+      <div className="col-md-9">
+        <Results documents={results} top={top} skip={skip} count={resultCount}></Results>
+        <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={setCurrentPage}></Pager>
+      </div>
+    )
   }
 
   return (
@@ -67,11 +89,7 @@ export default function Search() {
           </div>
           <Facets facets={facets} editFilters={setFilters}></Facets>
         </div>
-        
-        <div className="col-md-9">
-          <Results documents={results} top={top} skip={skip} count={resultCount}></Results>
-          <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={setCurrentPage}></Pager>
-        </div>
+        {body}
       </div>
     </div>
   );
