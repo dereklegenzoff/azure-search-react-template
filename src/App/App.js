@@ -53,7 +53,7 @@ export default function App() {
             <Route path="/details/:id" component={Details} />
           </Switch>
         </Router>
-        <AppFooter />
+        {/* <AppFooter /> */}
       </div>
     </AuthContext.Provider>
   );

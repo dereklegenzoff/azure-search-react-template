@@ -33,7 +33,7 @@ export default function Search() {
       top: top,
       skip: skip,
       filters: filters
-    }
+    };
 
     axios.post( '/api/search', body)
         .then( response => {

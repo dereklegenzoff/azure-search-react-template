@@ -13,20 +13,21 @@ const client = new SearchClient(
 
 module.exports = async function (context, req) {
     
-    //context.log(req);
+    context.log(req);
 
     // Reading inputs from HTTP Request
     const q = (req.query.q || (req.body && req.body.q));
-    const top = (req.query.q || (req.body && req.body.q));
-    const suggester = (req.query.q || (req.body && req.body.q));
+    const top = (req.query.top || (req.body && req.body.top));
+    const suggester = (req.query.suggester || (req.body && req.body.suggester));
     
     // Let's get the top 5 suggestions for that search term
-    const suggestions = await client.suggest(q, suggester, {top: top});
+    const suggestions = await client.suggest(q, suggester, {top: parseInt(top)});
+    //const suggestions = await client.autocomplete(q, suggester, {top: parseInt(top)});
 
-    //context.log(suggestions);
+    context.log(suggestions);
 
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: { suggestions: suggestions}
+        body: { suggestions: suggestions.results}
     };
 };
