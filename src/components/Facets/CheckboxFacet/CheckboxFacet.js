@@ -8,8 +8,6 @@ const checkboxFacet = (props) => {
         margin: "1rem"
     }
 
-    console.log("checkbopx facet:")
-    console.log(props);
     const checkboxes = props.values.map(facetValue => {
         return (
             <li className="facet-checkbox">

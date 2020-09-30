@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -28,11 +28,14 @@ export default function Home() {
     textAlign: "center"
   }
 
-  const [ searchTerm, setSearchTerm ] = useState("");
+
+
 
   const history = useHistory();
-  const navigateToSearchPage = () => history.push('/search?q=' + searchTerm);
-
+  const navigateToSearchPage = (q) => {
+    console.log(q);
+    history.push('/search?q=' + q);
+  }
   // const postSearchHandler = (event) => {
   //   event.preventDefault();
   //   // const body = {
@@ -50,10 +53,10 @@ export default function Home() {
 
   return (
     <div>
-      <div class="row" style={searchStyle}>
+      <div className="row" style={searchStyle}>
         <img style={imageStyle} src="/cognitive-search.png" alt="cognitive search logo"></img>
-        <p style={text} class="lead">Powered by Azure Cognitive Search</p>
-        <SearchBar postSearchHandler={navigateToSearchPage} searchChangeHandler={setSearchTerm}></SearchBar>
+        <p style={text} className="lead">Powered by Azure Cognitive Search</p>
+        <SearchBar postSearchHandler={navigateToSearchPage}></SearchBar>
       </div>
     </div>
   );

@@ -12,7 +12,8 @@ const suggestions = (props) => {
     // }
 
     const suggestionClickHandler = (e) => {
-
+        console.log(e.currentTarget.id);
+        props.suggestionClickHandler(e.currentTarget.id);
     }
 
     const borders = {
@@ -22,15 +23,13 @@ const suggestions = (props) => {
     }
 
     let suggestions = props.suggestions.map((s, index) => {
-        return (<div key={index} onClick={suggestionClickHandler}>{s.text}</div>);
+        return (<div key={index} id={s.text} onMouseDown={suggestionClickHandler}>{s.text}</div>);
       });
 
     return (
-        <main >
-            <div style={borders}>
-                {suggestions}
-            </div>
-        </main>
+        <div style={borders}>
+            {suggestions}
+        </div>
     );
 };
 

@@ -4,6 +4,7 @@ import Suggestions from './Suggestions/Suggestions';
 
 import "./SearchBar.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SelectInput from '@material-ui/core/Select/SelectInput';
 
 export default function SearchBar(props) {
 
@@ -12,13 +13,32 @@ export default function SearchBar(props) {
     let [showSuggestions, setShowSuggestions] = useState(false);
 
     const onSearchHandler = () => {
-        props.postSearchHandler();
+        props.postSearchHandler(q);
+        setShowSuggestions(false);
     }
+
+    const suggestionClickHandler = (s) => {
+        document.getElementById("search-box").value = s;
+        setShowSuggestions(false);
+        props.postSearchHandler(s);
+        
+    }
+
+    // const hideSuggestions = () => {        
+    //     setTimeout(function () {
+    //         setShowSuggestions(false);
+    //     }, 50);
+    // }
 
     const onChangeHandler = () => {
         var searchTerm = document.getElementById("search-box").value;
         setShowSuggestions(true);
         setQ(searchTerm);
+
+        // use this prop if you want to make the search more reactive
+        if (props.searchChangeHandler) {
+            props.searchChangeHandler(searchTerm);
+        }
     }
 
     useEffect(_ =>{
@@ -45,32 +65,34 @@ export default function SearchBar(props) {
 
     var suggestionDiv;
     if (showSuggestions) {
-        suggestionDiv = (<Suggestions suggestions={suggestions}></Suggestions>);
+        suggestionDiv = (<Suggestions suggestions={suggestions} suggestionClickHandler={(s) => suggestionClickHandler(s)}></Suggestions>);
     } else {
         suggestionDiv = (<div></div>);
     }
 
     return (
-        <form autoComplete="off">
-            <div class="input-group">
-                <div className={suggestions}>
+        <div >
+            <div className="input-group" >
+                <div className="suggestions" >
                     <input 
+                        autoComplete="off" // setting for browsers; not the app
                         type="text" 
                         id="search-box" 
-                        class="form-control rounded-0" 
+                        className="form-control rounded-0" 
                         placeholder="What are you looking for?" 
                         onChange={onChangeHandler} 
+                        defaultValue={props.q}
                         onBlur={() => setShowSuggestions(false)}
                         onClick={() => setShowSuggestions(true)}>
                     </input>
                     {suggestionDiv}
                 </div>
-                <div class="input-group-btn">
-                    <button class="btn btn-primary rounded-0" type="submit" onClick={onSearchHandler}>
+                <div className="input-group-btn">
+                    <button className="btn btn-primary rounded-0" type="submit" onClick={onSearchHandler}>
                         Search
                     </button>
                 </div>
             </div>
-        </form>
+        </div>
     );
 };

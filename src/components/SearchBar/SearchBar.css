@@ -5,4 +5,10 @@ div.container a.input-group-btn {
 .suggestions {
     position: relative;
     display: inline-block;
+    width: inherit;
+    z-index:99
+}
+
+.input-group {
+    flex-wrap: nowrap;
 }

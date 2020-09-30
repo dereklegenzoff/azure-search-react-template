@@ -11,21 +11,21 @@ const iconStyle = {
 export default function AppHeader() {
   return (
     <header className="header">
-      <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="/">
+      <nav className="navbar navbar-expand-lg">
+        <a className="navbar-brand" href="/">
           <img style={iconStyle} src="/microsoft-small.svg" className="logo" alt="Microsoft" />
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/Search">Search</a>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <a className="nav-link" href="/Search">Search</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://azure.microsoft.com/services/search/">Learn more</a>
+            <li className="nav-item">
+              <a className="nav-link" href="https://azure.microsoft.com/services/search/">Learn more</a>
             </li>
           </ul>
         </div>

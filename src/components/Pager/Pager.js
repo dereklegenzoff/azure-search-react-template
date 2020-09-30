@@ -8,8 +8,6 @@ export default function Pager(props) {
     let totalPages = Math.ceil(props.resultCount / props.resultsPerPage);
 
     useEffect(_=>{
-        console.log("lets set the page");
-        console.log(selectedPage);
         props.setCurrentPage(selectedPage);
     }, [selectedPage, props]);
 
@@ -49,24 +47,20 @@ export default function Pager(props) {
         maxPage = parseInt(selectedPage) + 2;
     }
 
-    console.log(selectedPage);
-    console.log(totalPages);
-    console.log(minPage);
-    console.log(maxPage);
 
     for (i = minPage; i <= maxPage; i++) {
         if (i === parseInt(selectedPage)) {
             page_links.push(
-                <li class="page-item active" key={i}>
-                    <span class="page-link">
+                <li className="page-item active" key={i}>
+                    <span className="page-link">
                         {i}
                     </span>
                 </li>
             );
         } else {
             page_links.push(
-                <li class="page-item" key={i}>
-                    <button class="page-link" id={i} onClick={(e) => setSelectedPage(e.currentTarget.id)}>{i}</button>
+                <li className="page-item" key={i}>
+                    <button className="page-link" id={i} onClick={(e) => setSelectedPage(e.currentTarget.id)}>{i}</button>
                 </li>
             );
         }
@@ -74,23 +68,23 @@ export default function Pager(props) {
 
     var previousButton;
     if (selectedPage === 1) {
-        previousButton = (<li class="page-item disabled" key="prev">
-                            <span class="page-link">Previous</span>
+        previousButton = (<li className="page-item disabled" key="prev">
+                            <span className="page-link">Previous</span>
                         </li>);
     } else {
-        previousButton = (<li class="page-item" key="prev" onClick={goToPreviousPage}>
-                            <button class="page-link">Previous</button>
+        previousButton = (<li className="page-item" key="prev" onClick={goToPreviousPage}>
+                            <button className="page-link">Previous</button>
                         </li>);
     }
 
     var nextButton;
     if (parseInt(selectedPage) === totalPages) {
-        nextButton = (<li class="page-item disabled" key="next">
-                            <span class="page-link">Next</span>
+        nextButton = (<li className="page-item disabled" key="next">
+                            <span className="page-link">Next</span>
                         </li>);
     } else {
-        nextButton = (<li class="page-item" key="next" >
-                            <button class="page-link" onClick={goToNextPage}>Next</button>
+        nextButton = (<li className="page-item" key="next" >
+                            <button className="page-link" onClick={goToNextPage}>Next</button>
                         </li>);
     }
 
@@ -98,7 +92,7 @@ export default function Pager(props) {
 
     return (
         <nav aria-label="..."  style={pagerStyle}>
-            <ul class="pagination" style={itemStyle}>
+            <ul className="pagination" style={itemStyle}>
                 {previousButton}
                 {page_links}
                 {nextButton}

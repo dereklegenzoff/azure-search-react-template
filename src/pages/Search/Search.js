@@ -51,8 +51,10 @@ export default function Search() {
   }, [q, top, skip, filters, currentPage]);
 
 
-  let postSearchHandler = (event) => {
-    event.preventDefault();
+  let postSearchHandler = (searchTerm) => {
+    console.log(searchTerm);
+    setQ(searchTerm);
+    console.log(searchTerm);
   }
 
   return (
@@ -61,7 +63,7 @@ export default function Search() {
       <div className="row">
         <div className="col-md-3">
           <div className="search-bar">
-            <SearchBar postSearchHandler={postSearchHandler} searchChangeHandler={setQ}></SearchBar>
+            <SearchBar postSearchHandler={postSearchHandler} q={q}></SearchBar>
           </div>
           <Facets facets={facets} editFilters={setFilters}></Facets>
         </div>
