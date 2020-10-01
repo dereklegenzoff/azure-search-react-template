@@ -7,3 +7,8 @@
 .card-body {
     padding-left: 0px;
 }
+
+.facet-header:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

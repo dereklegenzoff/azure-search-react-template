@@ -24,21 +24,18 @@ module.exports = async function (context, req) {
         const facets = process.env["SearchFacets"].split(",");
         //var resultFields: string[] = process.env["ResultFields"].split(",");
 
+        // If search term is empty, search everything
+        if (!q || q === "") {
+            q = "*";
+        }
+
         // Creating SearchOptions for query
         var searchOptions = {
             top: top,
             skip: skip,
             includeTotalCount: true,
-            facets: facets
-        }
-
-        if (filters && filters.length > 0) {
-            searchOptions.filter = filters;
-        }
-
-        // If search term is empty, search everything
-        if (!q || q === "") {
-            q = "*";
+            facets: facets,
+            filters: filters
         }
 
         // Sending the search request

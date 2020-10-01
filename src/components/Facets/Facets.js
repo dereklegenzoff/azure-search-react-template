@@ -5,14 +5,9 @@ import "./Facets.css";
 
 export default function Facets(props) {
 
-
-    //console.log("Facets:");
-    //console.log(props);
-
     var facets;
     try{
         facets = Object.keys(props.facets).map(key => {
-            console.log(key);
             return <CheckboxFacet 
                 key={key}
                 name={key} 

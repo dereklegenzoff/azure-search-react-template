@@ -20,7 +20,7 @@ const result = (props) => (
             <img className="card-img-top" src={props.document.image_url} style={imageStyle} alt="book cover"></img>
             <div className="card-body">
                 <h5 className="card-title">{props.document.original_title}</h5>
-                <p className="card-text">{props.document.authors}</p>
+                <p className="card-text">{props.document.authors?.join('\n')}</p>
             </div>
         </a>
     </div>

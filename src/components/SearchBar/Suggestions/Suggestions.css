@@ -1,0 +1,23 @@
+.suggestion-items {
+    left: 0;
+    height: auto;
+    right: 10px;
+    top: 100%;
+    position: absolute;
+    padding-top: 8px;
+    margin-top: -8px;
+    display: none;
+    box-sizing: content-box;
+}
+
+.suggestion-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+.suggestion-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+}
+
