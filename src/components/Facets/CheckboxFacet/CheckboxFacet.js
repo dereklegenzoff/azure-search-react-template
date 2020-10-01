@@ -25,10 +25,6 @@ const checkboxFacet = (props) => {
         paddingLeft: "1em"
     };
 
-    const headerStyle = {
-        textDecoration: "underline"
-    };
-
     return (
         <div style={facetStyle}>
             <h5 className="facet-header"> 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -29,27 +29,11 @@ export default function Home() {
   }
 
 
-
-
   const history = useHistory();
   const navigateToSearchPage = (q) => {
     console.log(q);
     history.push('/search?q=' + q);
   }
-  // const postSearchHandler = (event) => {
-  //   event.preventDefault();
-  //   // const body = {
-  //   //   "search": this.state.search
-  //   // }
-
-  //   console.log("searchTerm");
-  //   console.log(searchTerm);
-
-  //   //fetch( '/search?searchTerm=' + searchTerm);
-  //   let url = "/search"; //?searchTerm=" + searchTerm;
-  //   return  <Redirect  to="/search/" />;
-  // }
-  
 
   return (
     <div>

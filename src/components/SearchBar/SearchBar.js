@@ -4,7 +4,6 @@ import Suggestions from './Suggestions/Suggestions';
 
 import "./SearchBar.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SelectInput from '@material-ui/core/Select/SelectInput';
 
 export default function SearchBar(props) {
 
