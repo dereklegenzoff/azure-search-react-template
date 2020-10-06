@@ -1,6 +1,7 @@
 import React from 'react';
+import {List} from '@material-ui/core';
 import CheckboxFacet from './CheckboxFacet/CheckboxFacet';
-
+import styled from 'styled-components';
 import "./Facets.css";
 
 export default function Facets(props) {
@@ -26,12 +27,23 @@ export default function Facets(props) {
     const boxHeight = {
         height: "100%"
     }
+
+    const listItemStyle = {
+        paddingLeft: '36px !important'
+    }
+
     return (
         <div id="facetPanel" style={boxHeight}>
             <div style={facetBoxStyle}>
                 <div id="clearFilters"></div>
-                {facets}
+                <FacetList component="nav" style={listItemStyle} >
+                    {facets}
+                </FacetList>    
             </div>
         </div>
     );
 };
+
+const FacetList = styled(List)({
+    marginTop: '32px !important'
+})

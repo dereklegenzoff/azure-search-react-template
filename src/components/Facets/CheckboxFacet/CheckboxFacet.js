@@ -1,40 +1,63 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { Collapse, Checkbox, List, ListItem, ListItemText } from '@material-ui/core';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import styled from 'styled-components';
 
 import './CheckboxFacet.css';
 
-const checkboxFacet = (props) => {
+export default function CheckboxFacet(props) {
 
-    const facetStyle = {
-        margin: "1rem"
+    let [isExpanded, setIsExpanded] = useState(false);
+    let [selectedCount, setSelectedCount] = useState(0);
+
+    function mapFacetName(facetName) {
+        const capitalizeFirstLetter = (string) =>
+            string[0] ? `${string[0].toUpperCase()}${string.substring(1)}` : '';
+        facetName = facetName.trim();
+        facetName = capitalizeFirstLetter(facetName);
+
+        facetName = facetName.replace('_', ' ');
+        return facetName;
     }
 
     const checkboxes = props.values.map(facetValue => {
         return (
-            <li className="facet-checkbox">
-                <div>
-                    <label>
-                        {/* <input type="checkbox" onChange={toggleFacet.bind(null, valueKey)} checked={value.selected}/> {value.value + " "}{countDisplay} */}
-                        <input type="checkbox"/> {facetValue.value + " "}{"(" + facetValue.count + ")"}
-                    </label>
-                </div>
-            </li>
+            <FacetValueListItem dense disableGutters>
+                <Checkbox edge="start" disableRipple />
+                <ListItemText primary={facetValue.value + " (" + facetValue.count + ")"}/>
+            </FacetValueListItem>
         );
     });
 
-    const listStyle = {
-        paddingLeft: "1em"
-    };
 
     return (
-        <div style={facetStyle}>
-            <h5 className="facet-header"> 
-                {props.name}
-            </h5>
-            <ul style={listStyle}>
-                {checkboxes}
-            </ul>
+        <div>
+            <FacetListItem disableRipple={true} button onClick={() => setIsExpanded(!isExpanded)}>
+                <ListItemText 
+                    primary={mapFacetName(props.name)}
+                    secondary={`${selectedCount} of ${props.values.length} selected`}
+                />
+                {isExpanded ? <ExpandLess /> : <ExpandMore />}
+            </FacetListItem>
+            <Collapse in={isExpanded} component="div" disablePadding>
+                <FacetValuesList>
+                    {checkboxes}
+                </FacetValuesList>
+            </Collapse>
         </div>
     );
 }
 
-export default checkboxFacet;
+const FacetListItem = styled(ListItem)({
+    paddingLeft: '36px !important',
+})
+
+const FacetValueListItem= styled(ListItem)({
+    paddingLeft: '46px !important',
+});
+
+const FacetValuesList= styled(List)({
+    maxHeight: 340,
+    overflowY: 'auto !important',
+    marginRight: '18px !important'
+})
