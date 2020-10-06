@@ -9,15 +9,21 @@ export default function CheckboxFacet(props) {
 
     let [isExpanded, setIsExpanded] = useState(false);
 
-
-
     const checkboxes = props.values.map(facetValue => {
+
+        let isSelected = props.selectedFacets.some(facet => facet.value === facetValue.value);
+        
         return (
             <FacetValueListItem dense disableGutters id={facetValue.value}>
                 <Checkbox 
                     edge="start" 
                     disableRipple 
-                    onClick={() => props.addFilter(props.name, facetValue.value, typeof(props.values))}
+                    checked={isSelected}
+                    onClick= {
+                        isSelected ? 
+                        () => props.removeFilter({field: props.name, value: facetValue.value}) :
+                        () => props.addFilter(props.name, facetValue.value)
+                    }
                 />
                 <ListItemText primary={facetValue.value + " (" + facetValue.count + ")"}/>
             </FacetValueListItem>

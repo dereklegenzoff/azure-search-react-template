@@ -37,13 +37,15 @@ export default function Facets(props) {
         return facetName;
     }
 
-    function addFilter(name, value, type) {
+    function addFilter(name, value) {
         const newFilters = props.filters.concat({ field: name, value: value });
         props.setFilters(newFilters);
     }
 
     function removeFilter(filter) {      
-        const newFilters = props.filters.filter((item) => item !== filter);
+        console.log(props.filters);
+        console.log(filter);
+        const newFilters = props.filters.filter((item) => item.value !== filter.value);
         props.setFilters(newFilters);
     }
 
@@ -55,7 +57,9 @@ export default function Facets(props) {
                 name={key} 
                 values={props.facets[key]}
                 addFilter={addFilter}
+                removeFilter={removeFilter}
                 mapFacetName={mapFacetName}
+                selectedFacets={props.filters.filter( f => f.field === key)}
               />;
           });
     } catch (error) {

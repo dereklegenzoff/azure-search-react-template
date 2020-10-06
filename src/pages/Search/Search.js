@@ -37,16 +37,10 @@ export default function Search() {
       filters: filters
     };
 
-    
-
-    console.log("using effect");
-    console.log(filters);
-    console.log(body);
-
     axios.post( '/api/search', body)
         .then( response => {
-            console.log("search response:");
-            console.log(response.data);
+            // console.log("search response:");
+            // console.log(response.data);
 
             setResults(response.data.results);
             setFacets(response.data.facets);
