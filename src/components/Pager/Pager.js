@@ -67,7 +67,7 @@ export default function Pager(props) {
     }
 
     var previousButton;
-    if (selectedPage === 1) {
+    if (parseInt(selectedPage) === 1) {
         previousButton = (<li className="page-item disabled" key="prev">
                             <span className="page-link">Previous</span>
                         </li>);

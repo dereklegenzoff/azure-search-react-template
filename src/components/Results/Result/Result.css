@@ -5,6 +5,8 @@
     border: 1px solid #eee;
     box-shadow: 0 2px 3px #ccc;
     margin: 10px;
+    margin-bottom: 3px;
+    padding-bottom: 3px;
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -14,9 +16,12 @@
     background-color: #C0DDF5;
 }
 
-
-/* Detail Styles */
 .result-item {
     margin-bottom: 2em;
     text-align:center;
 }
+
+.title-style {
+    vertical-align: middle;
+}
+

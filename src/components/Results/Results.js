@@ -26,8 +26,8 @@ export default function Results(props) {
 
   return (
     <div>
-      <p style={infoStyle}>Showing {beginDocNumber}-{endDocNumber} of {props.count} results</p>
-      <div className="row row-cols-lg-5 Results">
+      <p style={infoStyle}>Showing {beginDocNumber}-{endDocNumber} of {props.count.toLocaleString()} results</p>
+      <div className="row row-cols-md-5 Results">
         {results}
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
-import CircularProgress  from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import axios from 'axios';
 
@@ -12,7 +12,7 @@ export default function Details() {
   let { id } = useParams();
   const [document, setDocument] = useState({});
   const [selectedTab, setTab] = useState(0);
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
 
 
@@ -22,10 +22,7 @@ export default function Details() {
     axios.get('/api/lookup?id=' + id)
       .then(response => {
         const doc = response.data.document;
-        console.log(doc);
         setDocument(doc);
-        console.log("response");
-        console.log(response);
         setIsLoading(false);
       })
       .catch(error => {
@@ -54,13 +51,13 @@ export default function Details() {
     body = (<CircularProgress />);
   } else {
     body = (<div class="card-body">
-    <h5 class="card-title">{document.original_title}</h5>
-    <img style={imageStyle} src={document.image_url} alt="Book cover"></img>
-    <p class="card-text">{document.authors?.join('; ')} - {document.original_publication_year}</p>
-    <p class="card-text">ISBN {document.isbn}</p>
-    <Rating name="half-rating-read" value={parseInt(document.average_rating)} precision={0.1} readOnly></Rating>
-    <p class="card-text">{document.ratings_count} Ratings</p>
-  </div>)
+      <h5 class="card-title">{document.original_title}</h5>
+      <img style={imageStyle} src={document.image_url} alt="Book cover"></img>
+      <p class="card-text">{document.authors?.join('; ')} - {document.original_publication_year}</p>
+      <p class="card-text">ISBN {document.isbn}</p>
+      <Rating name="half-rating-read" value={parseInt(document.average_rating)} precision={0.1} readOnly></Rating>
+      <p class="card-text">{document.ratings_count} Ratings</p>
+    </div>)
   }
 
   if (selectedTab === 0) {
@@ -96,7 +93,7 @@ export default function Details() {
             </ul>
           </div>
           <div class="card-body">
-          <div>{JSON.stringify(document, null, 2)}</div>
+            <div>{JSON.stringify(document, null, 2)}</div>
           </div>
         </div>
       </div>
