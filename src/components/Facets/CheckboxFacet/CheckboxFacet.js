@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Collapse, Checkbox, List, ListItem, ListItemText } from '@material-ui/core';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import styled from 'styled-components';
@@ -8,22 +8,17 @@ import './CheckboxFacet.css';
 export default function CheckboxFacet(props) {
 
     let [isExpanded, setIsExpanded] = useState(false);
-    let [selectedCount, setSelectedCount] = useState(0);
 
-    function mapFacetName(facetName) {
-        const capitalizeFirstLetter = (string) =>
-            string[0] ? `${string[0].toUpperCase()}${string.substring(1)}` : '';
-        facetName = facetName.trim();
-        facetName = capitalizeFirstLetter(facetName);
 
-        facetName = facetName.replace('_', ' ');
-        return facetName;
-    }
 
     const checkboxes = props.values.map(facetValue => {
         return (
-            <FacetValueListItem dense disableGutters>
-                <Checkbox edge="start" disableRipple />
+            <FacetValueListItem dense disableGutters id={facetValue.value}>
+                <Checkbox 
+                    edge="start" 
+                    disableRipple 
+                    onClick={() => props.addFilter(props.name, facetValue.value, typeof(props.values))}
+                />
                 <ListItemText primary={facetValue.value + " (" + facetValue.count + ")"}/>
             </FacetValueListItem>
         );
@@ -34,12 +29,11 @@ export default function CheckboxFacet(props) {
         <div>
             <FacetListItem disableRipple={true} button onClick={() => setIsExpanded(!isExpanded)}>
                 <ListItemText 
-                    primary={mapFacetName(props.name)}
-                    secondary={`${selectedCount} of ${props.values.length} selected`}
+                    primary={props.mapFacetName(props.name)}
                 />
                 {isExpanded ? <ExpandLess /> : <ExpandMore />}
             </FacetListItem>
-            <Collapse in={isExpanded} component="div" disablePadding>
+            <Collapse in={isExpanded} component="div">
                 <FacetValuesList>
                     {checkboxes}
                 </FacetValuesList>

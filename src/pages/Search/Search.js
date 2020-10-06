@@ -18,7 +18,7 @@ export default function Search() {
   const [ resultCount, setResultCount ] = useState(0);
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ q, setQ ] = useState(new URLSearchParams(location.search).get('q') ?? "*");
-  const [ top, setTop ] = useState(new URLSearchParams(location.search).get('top') ?? 8);
+  const [ top ] = useState(new URLSearchParams(location.search).get('top') ?? 8);
   const [ skip, setSkip ] = useState(new URLSearchParams(location.search).get('skip') ?? 0);
   //const [ error, setError ] = useState(false);
   const [ filters, setFilters ] = useState([]);
@@ -29,7 +29,6 @@ export default function Search() {
   
   useEffect(() => {
     setIsLoading(true);
-    setTop(8);
     setSkip((currentPage-1) * top);
     const body = {
       q: q,
@@ -37,6 +36,12 @@ export default function Search() {
       skip: skip,
       filters: filters
     };
+
+    
+
+    console.log("using effect");
+    console.log(filters);
+    console.log(body);
 
     axios.post( '/api/search', body)
         .then( response => {
@@ -64,6 +69,32 @@ export default function Search() {
     console.log(searchTerm);
   }
 
+
+  let createFilterExpression = (filterList) => {
+    
+    console.log("filtering wahoo");
+    console.log(filterList.length);
+
+    let i = 0;
+    let fields = {}
+
+    while (i < filterList.length) {
+      if (!fields[filterList[i].field]) {
+        fields[filterList[i].field] = filterList[i].value;
+      } else {
+        fields[filterList[i].field] += `, ${filterList[i].value}`;
+      }
+
+      i += 1;
+    }
+
+    console.log(fields);
+    let filterExpressions = [];
+    Object.keys(fields).forEach(key => filterExpressions.push(`${key}/any(t: search.in(t, '${fields[key]}', ','))`))
+  
+    return filterExpressions.join(' and ');
+  }
+
   var body;
   if (isLoading) {
     body = (
@@ -87,7 +118,7 @@ export default function Search() {
           <div className="search-bar">
             <SearchBar postSearchHandler={postSearchHandler} q={q}></SearchBar>
           </div>
-          <Facets facets={facets} editFilters={setFilters}></Facets>
+          <Facets facets={facets} filters={filters} setFilters={setFilters}></Facets>
         </div>
         {body}
       </div>

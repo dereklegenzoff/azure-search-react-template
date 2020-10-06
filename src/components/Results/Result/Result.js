@@ -17,7 +17,7 @@ const imageStyle = {
 };
 
 const bodyStyle = {
-    padding: '0.5rem'
+    padding: '0.25rem'
 };
 
 const result = (props) => (
