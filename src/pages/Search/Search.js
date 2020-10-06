@@ -69,32 +69,6 @@ export default function Search() {
     console.log(searchTerm);
   }
 
-
-  let createFilterExpression = (filterList) => {
-    
-    console.log("filtering wahoo");
-    console.log(filterList.length);
-
-    let i = 0;
-    let fields = {}
-
-    while (i < filterList.length) {
-      if (!fields[filterList[i].field]) {
-        fields[filterList[i].field] = filterList[i].value;
-      } else {
-        fields[filterList[i].field] += `, ${filterList[i].value}`;
-      }
-
-      i += 1;
-    }
-
-    console.log(fields);
-    let filterExpressions = [];
-    Object.keys(fields).forEach(key => filterExpressions.push(`${key}/any(t: search.in(t, '${fields[key]}', ','))`))
-  
-    return filterExpressions.join(' and ');
-  }
-
   var body;
   if (isLoading) {
     body = (
