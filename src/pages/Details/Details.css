@@ -1,1 +1,8 @@
-/* Detail Styles */
+.card {
+    padding-top: 2em;
+};
+
+.image {
+    width: 10em;
+    height: auto;
+}

@@ -3,32 +3,10 @@ import { useHistory } from "react-router-dom";
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 
+import "./Home.css";
 import "../../pages/Search/Search.css";
 
 export default function Home() {
-
-  const searchStyle = {
-    margin: "5em",
-    maxWidth: "45%",
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto"
-  }
-
-  const imageStyle = {
-    maxHeight: "12em",
-    width: "auto",
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginBottom: "0"
-  }
-
-  const text = {
-    textAlign: "center"
-  }
-
-
   const history = useHistory();
   const navigateToSearchPage = (q) => {
     console.log(q);
@@ -36,12 +14,12 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div className="row" style={searchStyle}>
-        <img style={imageStyle} src="/cognitive-search.png" alt="cognitive search logo"></img>
-        <p style={text} className="lead">Powered by Azure Cognitive Search</p>
+    <main className="main main--home">
+      <div className="row home-search">
+        <img className="logo" src="/cognitive-search.png" alt="Cognitive Search"></img>
+        <p className="poweredby lead">Powered by Azure Cognitive Search</p>
         <SearchBar postSearchHandler={navigateToSearchPage}></SearchBar>
       </div>
-    </div>
+    </main>
   );
 };
