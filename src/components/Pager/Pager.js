@@ -77,7 +77,7 @@ export default function Pager(props) {
     
 
     return (
-        <nav aria-label="..."  className="pagerStyle">
+        <nav aria-label="..."  className="pager">
             <ul className="pagination item">
                 {previousButton}
                 {page_links}
