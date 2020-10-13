@@ -46,8 +46,8 @@ export default function Details() {
 
   if (selectedTab === 0) {
     return (
-      <div class="main main--details container fluid card">
-        <div class="card text-center">
+      <div class="main main--details container fluid">
+        <div class="card text-center result-container">
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
               <li class="nav-item">
@@ -64,7 +64,7 @@ export default function Details() {
     );
   } else {
     return (
-      <div class="main main--details container fluid card">
+      <div class="main main--details container fluid">
         <div class="card text-center">
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
