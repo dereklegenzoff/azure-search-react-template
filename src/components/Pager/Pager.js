@@ -19,20 +19,6 @@ export default function Pager(props) {
         setSelectedPage(selectedPage - 1);
     }
 
-
-    const itemStyle = {
-        margin: "1em",
-        marginLeft: "auto",
-        marginRight: "auto"
-      }
-    
-    const pagerStyle = {
-        marginLeft: "auto",
-        marginRight: "auto",
-        maxWidth: "fit-content"
-      }
-
-
     var i = 0;
     var page_links = [];
 
@@ -91,8 +77,8 @@ export default function Pager(props) {
     
 
     return (
-        <nav aria-label="..."  style={pagerStyle}>
-            <ul className="pagination" style={itemStyle}>
+        <nav aria-label="..."  className="pager">
+            <ul className="pagination item">
                 {previousButton}
                 {page_links}
                 {nextButton}

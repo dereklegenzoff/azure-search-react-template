@@ -6,27 +6,6 @@ import "./Facets.css";
 
 export default function Facets(props) {
 
-
-    const facetBoxStyle = {
-        borderRight: "1px solid #f0f0f0"
-    };
-
-    const boxHeight = {
-        height: "100%"
-    };
-
-    const listItemStyle = {
-        paddingLeft: '36px !important'
-    };
-
-    const filterListStyle = {
-        listStyle: "none"
-    };
-
-    const chipStyle = {
-        margin: "0.25em"
-    };
-
     function mapFacetName(facetName) {
         const capitalizeFirstLetter = (string) =>
             string[0] ? `${string[0].toUpperCase()}${string.substring(1)}` : '';
@@ -72,21 +51,21 @@ export default function Facets(props) {
                 <Chip 
                     label={`${mapFacetName(filter.field)}: ${filter.value}`} 
                     onDelete={() => removeFilter(filter)}
-                    style={chipStyle}
+                    className="chip"
               />
             </li>);
           });
 
 
     return (
-        <div id="facetPanel" style={boxHeight}>
-            <div style={facetBoxStyle}>
+        <div id="facetPanel" className="box">
+            <div className="facetbox">
                 <div id="clearFilters">
-                <ul style={filterListStyle}>
+                <ul className="filterlist">
                     {filters}
                 </ul>
                 </div>
-                <FacetList component="nav" style={listItemStyle} >
+                <FacetList component="nav" className="listitem" >
                     {facets}
                 </FacetList>    
             </div>

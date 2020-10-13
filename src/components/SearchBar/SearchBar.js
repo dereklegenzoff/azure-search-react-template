@@ -3,7 +3,6 @@ import axios from 'axios';
 import Suggestions from './Suggestions/Suggestions';
 
 import "./SearchBar.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function SearchBar(props) {
 

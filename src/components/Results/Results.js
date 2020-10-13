@@ -2,17 +2,12 @@ import React from 'react';
 import Result from './Result/Result';
 
 import "./Results.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Results(props) {
-
-  //console.log("results:");
-  //console.log(props.documents);
 
   const infoStyle = {
     margin: '1em'
   }
-  //const result_html = [];
 
   let results = props.documents.map((result, index) => {
     return <Result 

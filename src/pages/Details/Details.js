@@ -14,8 +14,6 @@ export default function Details() {
   const [selectedTab, setTab] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-
-
   useEffect(() => {
     setIsLoading(true);
     console.log(id);
@@ -32,27 +30,13 @@ export default function Details() {
 
   }, [id]);
 
-  // let rawData = Object.keys(document).map(key => {
-  //   //console.log(key);
-  //   return <li><strong>{key}</strong>: {document[key]}</li>;
-  // });
-
-  const cardStyle = {
-    paddingTop: "2em"
-  };
-
-  const imageStyle = {
-    width: "10em",
-    height: "auto"
-  }
-
   var body;
   if (isLoading) {
     body = (<CircularProgress />);
   } else {
     body = (<div class="card-body">
       <h5 class="card-title">{document.original_title}</h5>
-      <img style={imageStyle} src={document.image_url} alt="Book cover"></img>
+      <img class="image" src={document.image_url} alt="Book cover"></img>
       <p class="card-text">{document.authors?.join('; ')} - {document.original_publication_year}</p>
       <p class="card-text">ISBN {document.isbn}</p>
       <Rating name="half-rating-read" value={parseInt(document.average_rating)} precision={0.1} readOnly></Rating>
@@ -62,7 +46,7 @@ export default function Details() {
 
   if (selectedTab === 0) {
     return (
-      <div class="container fluid" style={cardStyle}>
+      <div class="main main--details container fluid card">
         <div class="card text-center">
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
@@ -80,7 +64,7 @@ export default function Details() {
     );
   } else {
     return (
-      <div class="container fluid" style={cardStyle}>
+      <div class="main main--details container fluid card">
         <div class="card text-center">
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
