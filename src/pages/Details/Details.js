@@ -34,27 +34,27 @@ export default function Details() {
   if (isLoading) {
     body = (<CircularProgress />);
   } else {
-    body = (<div class="card-body">
-      <h5 class="card-title">{document.original_title}</h5>
-      <img class="image" src={document.image_url} alt="Book cover"></img>
-      <p class="card-text">{document.authors?.join('; ')} - {document.original_publication_year}</p>
-      <p class="card-text">ISBN {document.isbn}</p>
+    body = (<div className="card-body">
+      <h5 className="card-title">{document.original_title}</h5>
+      <img className="image" src={document.image_url} alt="Book cover"></img>
+      <p className="card-text">{document.authors?.join('; ')} - {document.original_publication_year}</p>
+      <p className="card-text">ISBN {document.isbn}</p>
       <Rating name="half-rating-read" value={parseInt(document.average_rating)} precision={0.1} readOnly></Rating>
-      <p class="card-text">{document.ratings_count} Ratings</p>
+      <p className="card-text">{document.ratings_count} Ratings</p>
     </div>)
   }
 
   if (selectedTab === 0) {
     return (
-      <div class="main main--details container fluid">
-        <div class="card text-center result-container">
-          <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-              <li class="nav-item">
-                <button class="nav-link active" onClick={() => setTab(0)}>Result</button>
+      <div className="main main--details container fluid">
+        <div className="card text-center result-container">
+          <div className="card-header">
+            <ul className="nav nav-tabs card-header-tabs">
+              <li className="nav-item">
+                <button className="nav-link active" onClick={() => setTab(0)}>Result</button>
               </li>
-              <li class="nav-item">
-                <button class="nav-link" onClick={() => setTab(1)}>Raw Data</button>
+              <li className="nav-item">
+                <button className="nav-link" onClick={() => setTab(1)}>Raw Data</button>
               </li>
             </ul>
           </div>
@@ -64,19 +64,19 @@ export default function Details() {
     );
   } else {
     return (
-      <div class="main main--details container fluid">
-        <div class="card text-center">
-          <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-              <li class="nav-item">
-                <button class="nav-link" onClick={() => setTab(0)}>Result</button>
+      <div className="main main--details container fluid">
+        <div className="card text-center">
+          <div className="card-header">
+            <ul className="nav nav-tabs card-header-tabs">
+              <li className="nav-item">
+                <button className="nav-link" onClick={() => setTab(0)}>Result</button>
               </li>
-              <li class="nav-item">
-                <button class="nav-link active" onClick={() => setTab(1)}>Raw Data</button>
+              <li className="nav-item">
+                <button className="nav-link active" onClick={() => setTab(1)}>Raw Data</button>
               </li>
             </ul>
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <div>{JSON.stringify(document, null, 2)}</div>
           </div>
         </div>
