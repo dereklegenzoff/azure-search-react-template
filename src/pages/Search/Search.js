@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CircularProgress  from '@material-ui/core/CircularProgress';
-import {useLocation} from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import Results from '../../components/Results/Results';
 import Pager from '../../components/Pager/Pager';
@@ -13,6 +13,7 @@ import "./Search.css";
 export default function Search() {
   
   let location = useLocation();
+  const history = useHistory();
   
   const [ results, setResults ] = useState([]);
   const [ resultCount, setResultCount ] = useState(0);
@@ -20,7 +21,6 @@ export default function Search() {
   const [ q, setQ ] = useState(new URLSearchParams(location.search).get('q') ?? "*");
   const [ top ] = useState(new URLSearchParams(location.search).get('top') ?? 8);
   const [ skip, setSkip ] = useState(new URLSearchParams(location.search).get('skip') ?? 0);
-  //const [ error, setError ] = useState(false);
   const [ filters, setFilters ] = useState([]);
   const [ facets, setFacets ] = useState({});
   const [ isLoading, setIsLoading ] = useState(true);
@@ -28,6 +28,7 @@ export default function Search() {
   let resultsPerPage = top;
   
   useEffect(() => {
+    history.push('/search?q=' + q);
     setIsLoading(true);
     setSkip((currentPage-1) * top);
     const body = {
@@ -39,9 +40,6 @@ export default function Search() {
 
     axios.post( '/api/search', body)
         .then( response => {
-            // console.log("search response:");
-            // console.log(response.data);
-
             setResults(response.data.results);
             setFacets(response.data.facets);
             setResultCount(response.data.count);
@@ -50,7 +48,6 @@ export default function Search() {
         .catch(error => {
             console.log(error);
             setIsLoading(false);
-            // setError(true);
         });
 
     

@@ -22,12 +22,6 @@ export default function SearchBar(props) {
         
     }
 
-    // const hideSuggestions = () => {        
-    //     setTimeout(function () {
-    //         setShowSuggestions(false);
-    //     }, 50);
-    // }
-
     const onChangeHandler = () => {
         var searchTerm = document.getElementById("search-box").value;
         setShowSuggestions(true);

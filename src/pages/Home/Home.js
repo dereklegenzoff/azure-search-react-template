@@ -10,6 +10,10 @@ export default function Home() {
   const history = useHistory();
   const navigateToSearchPage = (q) => {
     console.log(q);
+
+    if (!q || q === '') {
+      q = '*'
+    }
     history.push('/search?q=' + q);
   }
 

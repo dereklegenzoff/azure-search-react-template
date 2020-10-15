@@ -101,3 +101,5 @@ Once you create the static web app, it will automatically deploy the web app to 
 The last thing you need to do is select configuration and then edit the application settings to add the credentials from `local.settings.json`. It may take a few minutes for this blade to become available in the portal.
 
 ![Azure Static Web Apps Configuration Screenshot](./images/config.png)
+
+Additional documentation can be found in the [docs folder](./docs).

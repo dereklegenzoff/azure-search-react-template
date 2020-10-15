@@ -5,12 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const suggestions = (props) => {
 
-    // const onChangeHandler = () => {
-    //     var searchTerm = document.getElementById("search-box").value;
-    //     console.log(searchTerm);
-    //     props.searchChangeHandler(searchTerm);
-    // }
-
     const suggestionClickHandler = (e) => {
         console.log(e.currentTarget.id);
         props.suggestionClickHandler(e.currentTarget.id);
@@ -23,7 +17,7 @@ const suggestions = (props) => {
     }
 
     let suggestions = props.suggestions.map((s, index) => {
-        return (<div key={index} id={s.text} onMouseDown={suggestionClickHandler}>{s.text}</div>);
+        return (<div className="suggestion-item" key={index} id={s.text} onMouseDown={suggestionClickHandler}>{s.text}</div>);
       });
 
     return (
