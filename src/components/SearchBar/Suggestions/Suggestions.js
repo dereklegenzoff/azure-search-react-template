@@ -3,7 +3,7 @@ import React from 'react';
 import "./Suggestions.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const suggestions = (props) => {
+export default function Suggestions(props) {
 
     const suggestionClickHandler = (e) => {
         console.log(e.currentTarget.id);
@@ -26,5 +26,3 @@ const suggestions = (props) => {
         </div>
     );
 };
-
-export default suggestions;
