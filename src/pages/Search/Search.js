@@ -28,7 +28,6 @@ export default function Search() {
   let resultsPerPage = top;
   
   useEffect(() => {
-    history.push('/search?q=' + q);
     setIsLoading(true);
     setSkip((currentPage-1) * top);
     const body = {
@@ -49,9 +48,15 @@ export default function Search() {
             console.log(error);
             setIsLoading(false);
         });
-
     
   }, [q, top, skip, filters, currentPage]);
+
+  // pushing the new search term to history when q is updated
+  // allows the back button to work as expected when coming back from the details page
+  useEffect(() => {
+    history.push('/search?q=' + q);  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [q]);
 
 
   let postSearchHandler = (searchTerm) => {
