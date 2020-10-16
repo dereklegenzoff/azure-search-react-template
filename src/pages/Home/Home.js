@@ -9,8 +9,6 @@ import "../../pages/Search/Search.css";
 export default function Home() {
   const history = useHistory();
   const navigateToSearchPage = (q) => {
-    console.log(q);
-
     if (!q || q === '') {
       q = '*'
     }

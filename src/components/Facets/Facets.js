@@ -22,8 +22,6 @@ export default function Facets(props) {
     }
 
     function removeFilter(filter) {      
-        console.log(props.filters);
-        console.log(filter);
         const newFilters = props.filters.filter((item) => item.value !== filter.value);
         props.setFilters(newFilters);
     }

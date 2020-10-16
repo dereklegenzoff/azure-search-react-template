@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Suggestions(props) {
 
     const suggestionClickHandler = (e) => {
-        console.log(e.currentTarget.id);
         props.suggestionClickHandler(e.currentTarget.id);
     }
 

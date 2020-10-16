@@ -13,7 +13,7 @@ import "./Search.css";
 export default function Search() {
   
   let location = useLocation();
-  const history = useHistory();
+  let history = useHistory();
   
   const [ results, setResults ] = useState([]);
   const [ resultCount, setResultCount ] = useState(0);
@@ -60,9 +60,8 @@ export default function Search() {
 
 
   let postSearchHandler = (searchTerm) => {
-    console.log(searchTerm);
+    //console.log(searchTerm);
     setQ(searchTerm);
-    console.log(searchTerm);
   }
 
   var body;
