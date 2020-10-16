@@ -32,8 +32,7 @@
 
 .card-img-top {
     min-width: 6em;
-    max-width: 10em;
-    height: auto;
+    width: auto;
     max-height: 12em;
     vertical-align: center;
 }
