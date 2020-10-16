@@ -25,3 +25,19 @@
     vertical-align: middle;
 }
 
+.card {
+    width: 10rem;
+    max-height: 18rem;
+}
+
+.card-img-top {
+    min-width: 6em;
+    max-width: 10em;
+    height: auto;
+    max-height: 12em;
+    vertical-align: center;
+}
+
+.card-body {
+    padding: 0.25rem;
+}

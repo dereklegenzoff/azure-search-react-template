@@ -1,12 +1,13 @@
-.logo {
-    margin-left: 2em;
-    height: 60px;
-}
-
 .header {
     background-color: #0078d7;
     color: #eee;
 }
+
+.navbar-logo {
+    width: 1.5em;
+    height: auto;
+}
+
 .nav-link { color: #fff; }
 .nav-link:hover { color: #eee; }
 

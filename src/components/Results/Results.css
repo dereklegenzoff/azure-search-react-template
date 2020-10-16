@@ -1,4 +1,8 @@
 /* Detail Styles */
+.results-info {
+    margin: 1em;
+}
+
 .result-item {
     margin-bottom: 2em;
     text-align:center;
@@ -9,7 +13,7 @@
     max-height: 300px;
 }
 
-.Results {
+.results {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
