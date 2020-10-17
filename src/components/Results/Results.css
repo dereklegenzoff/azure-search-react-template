@@ -3,16 +3,6 @@
     margin: 1em;
 }
 
-.result-item {
-    margin-bottom: 2em;
-    text-align:center;
-}
-.result-item-image {
-    min-width: 150px;
-    max-width: 200px;
-    max-height: 300px;
-}
-
 .results {
     display: flex;
     flex-flow: row wrap;
@@ -21,4 +11,9 @@
     margin: auto;
     margin-left: 0em;
     margin-right: 0em;
+}
+
+.results .result {
+    width: 10rem;
+    max-height: 18rem;
 }
