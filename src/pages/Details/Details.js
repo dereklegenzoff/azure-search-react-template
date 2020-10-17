@@ -52,7 +52,7 @@ export default function Details() {
 
     // View raw data
     else {
-      rawStyle += "active";
+      rawStyle += " active";
       detailsBody = (
         <div className="card-body text-left">
           <pre><code>
