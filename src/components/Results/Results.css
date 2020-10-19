@@ -1,15 +1,9 @@
 /* Detail Styles */
-.result-item {
-    margin-bottom: 2em;
-    text-align:center;
-}
-.result-item-image {
-    min-width: 150px;
-    max-width: 200px;
-    max-height: 300px;
+.results-info {
+    margin: 1em;
 }
 
-.Results {
+.results {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -17,4 +11,9 @@
     margin: auto;
     margin-left: 0em;
     margin-right: 0em;
+}
+
+.results .result {
+    width: 10rem;
+    max-height: 18rem;
 }
