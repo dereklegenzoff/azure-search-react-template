@@ -103,3 +103,4 @@ The last thing you need to do is select configuration and then edit the applicat
 ![Azure Static Web Apps Configuration Screenshot](./images/config.png)
 
 Additional documentation can be found in the [docs folder](./docs).
+
