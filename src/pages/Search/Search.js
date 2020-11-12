@@ -55,6 +55,7 @@ export default function Search() {
   // allows the back button to work as expected when coming back from the details page
   useEffect(() => {
     history.push('/search?q=' + q);  
+    setCurrentPage(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q]);
 
