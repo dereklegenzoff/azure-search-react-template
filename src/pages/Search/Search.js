@@ -56,6 +56,7 @@ export default function Search() {
   useEffect(() => {
     history.push('/search?q=' + q);  
     setCurrentPage(1);
+    setFilters([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q]);
 
