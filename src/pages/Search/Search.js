@@ -19,6 +19,7 @@ export default function Search() {
   const [ resultCount, setResultCount ] = useState(0);
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ q, setQ ] = useState(new URLSearchParams(location.search).get('q') ?? "*");
+  //const [ oldQ, setOldQ ] = useState("");
   const [ top ] = useState(new URLSearchParams(location.search).get('top') ?? 8);
   const [ skip, setSkip ] = useState(new URLSearchParams(location.search).get('skip') ?? 0);
   const [ filters, setFilters ] = useState([]);
@@ -29,7 +30,7 @@ export default function Search() {
   
   useEffect(() => {
     setIsLoading(true);
-    setSkip((currentPage-1) * top);
+    //setSkip(skip => (currentPage-1) * top);
     const body = {
       q: q,
       top: top,
@@ -49,21 +50,29 @@ export default function Search() {
             setIsLoading(false);
         });
     
-  }, [q, top, skip, filters, currentPage]);
+  }, [q, top, skip, filters]);
 
-  // pushing the new search term to history when q is updated
-  // allows the back button to work as expected when coming back from the details page
-  useEffect(() => {
-    history.push('/search?q=' + q);  
-    setCurrentPage(1);
-    setFilters([]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [q]);
+
+  // useEffect(() => {
+
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [q]);
+
 
 
   let postSearchHandler = (searchTerm) => {
-    //console.log(searchTerm);
+    // pushing the new search term to history when q is updated
+    // allows the back button to work as expected when coming back from the details page
+    history.push('/search?q=' + q);  
+    setCurrentPage(1);
+    setSkip(0);
+    setFilters([]);
     setQ(searchTerm);
+  }
+
+  let updatePagination = (newPageNumber) => {
+    setCurrentPage(newPageNumber);
+    setSkip((newPageNumber-1) * top);
   }
 
   var body;
@@ -76,7 +85,7 @@ export default function Search() {
     body = (
       <div className="col-md-9">
         <Results documents={results} top={top} skip={skip} count={resultCount}></Results>
-        <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={setCurrentPage}></Pager>
+        <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={updatePagination}></Pager>
       </div>
     )
   }
