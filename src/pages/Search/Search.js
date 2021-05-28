@@ -54,7 +54,7 @@ export default function Search() {
   let postSearchHandler = (searchTerm) => {
     // pushing the new search term to history when q is updated
     // allows the back button to work as expected when coming back from the details page
-    history.push('/search?q=' + q);  
+    history.push('/search?q=' + searchTerm);  
     setCurrentPage(1);
     setSkip(0);
     setFilters([]);

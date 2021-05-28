@@ -46,7 +46,7 @@ export default function Pager(props) {
         } else {
             page_links.push(
                 <li className="page-item" key={i}>
-                    <button className="page-link" id={i} onClick={(e) => setSelectedPage(e.currentTarget.id)}>{i}</button>
+                    <button className="page-link" id={i} onClick={(e) => setSelectedPage(parseInt(e.currentTarget.id))}>{i}</button>
                 </li>
             );
         }
