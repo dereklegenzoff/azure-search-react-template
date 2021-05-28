@@ -60,7 +60,7 @@ export default function SearchBar(props) {
             }
         }, 300);
         return () => clearTimeout(timer);
-    }, [q, props]);
+    }, [q]);
 
     var suggestionDiv;
     if (showSuggestions) {

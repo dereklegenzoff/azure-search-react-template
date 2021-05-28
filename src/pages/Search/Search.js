@@ -29,7 +29,6 @@ export default function Search() {
   
   useEffect(() => {
     setIsLoading(true);
-    setSkip((currentPage-1) * top);
     const body = {
       q: q,
       top: top,
@@ -49,21 +48,22 @@ export default function Search() {
             setIsLoading(false);
         });
     
-  }, [q, top, skip, filters, currentPage]);
-
-  // pushing the new search term to history when q is updated
-  // allows the back button to work as expected when coming back from the details page
-  useEffect(() => {
-    history.push('/search?q=' + q);  
-    setCurrentPage(1);
-    setFilters([]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [q]);
+  }, [q, top, skip, filters]);
 
 
   let postSearchHandler = (searchTerm) => {
-    //console.log(searchTerm);
+    // pushing the new search term to history when q is updated
+    // allows the back button to work as expected when coming back from the details page
+    history.push('/search?q=' + q);  
+    setCurrentPage(1);
+    setSkip(0);
+    setFilters([]);
     setQ(searchTerm);
+  }
+
+  let updatePagination = (newPageNumber) => {
+    setCurrentPage(newPageNumber);
+    setSkip((newPageNumber-1) * top);
   }
 
   var body;
@@ -76,7 +76,7 @@ export default function Search() {
     body = (
       <div className="col-md-9">
         <Results documents={results} top={top} skip={skip} count={resultCount}></Results>
-        <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={setCurrentPage}></Pager>
+        <Pager className="pager-style" currentPage={currentPage} resultCount={resultCount} resultsPerPage={resultsPerPage} setCurrentPage={updatePagination}></Pager>
       </div>
     )
   }
