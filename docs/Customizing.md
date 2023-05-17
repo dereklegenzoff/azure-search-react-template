@@ -27,13 +27,13 @@ The JSX for the basic result looks like this:
     <a href={`/details/${props.document.id}`}>
         <img className="card-img-top" src={props.document.image_url} alt="book cover"></img>
         <div className="card-body">
-            <h6 className="title-style">{props.document.original_title}</h6>
+            <h6 className="title-style">{props.document.title}</h6>
         </div>
     </a>
 </div>
 ```
 
-The property `props.document` will contain all of the fields returned by your query. The properties `id`, `image_url`, and `original_title` all correspond to fields in the good-books index and should be updated to reflect the fields in your own search index.
+The property `props.document` will contain all of the fields returned by your query. The properties `id`, `image_url`, and `title` all correspond to fields in the good-books index and should be updated to reflect the fields in your own search index.
 
 Beyond that, you can customize this component as much as you want depending on the needs of your application.
 
@@ -51,7 +51,7 @@ To edit the main view, simply edit the JSX used to define the body variable. All
     body = (<CircularProgress />);
   } else {
     body = (<div class="card-body">
-      <h5 class="card-title">{document.original_title}</h5>
+      <h5 class="card-title">{document.title}</h5>
       <img style={imageStyle} src={document.image_url} alt="Book cover"></img>
       <p class="card-text">{document.authors?.join('; ')} - {document.original_publication_year}</p>
       <p class="card-text">ISBN {document.isbn}</p>
